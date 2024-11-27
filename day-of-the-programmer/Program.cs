@@ -4,42 +4,47 @@ class Program
 {
     static void Main(string[] args)
     {
-
         int InputYear = int.Parse(Console.ReadLine());
         Console.WriteLine(DayOfProgrammer(InputYear));
-
     }
 
-    public static string DayOfProgrammer(int year)
-    {
-        string result = string.Empty;
-
+    private static int FebNumberDays(int year){
+        int febNumberDays = 28;
         if (year % 4 == 0)
         {
-            result += "Julian's calendar leap year: Every year that is exactly divisible by four is a leap year \n";
+            Console.WriteLine("Julian's calendar leap year: Every year that is exactly divisible by four is a leap year, so...");
             if (year % 400 == 0)
             {
-                result += "Gregorian's calendar leap year: Centurial years are leap years if they are exactly divisible by 400";
+                Console.WriteLine("Gregorian's calendar leap year: Centurial years are leap years if they are exactly divisible by 400");
+                febNumberDays = 29;
             }
             else if (year % 100 != 0)
             {
-                result += "Gregorian's calendar leap year: Divisible by 4 and not divisible by 100";
-            }
-            else
-            {
-                result += "Gregorian's calendar: NOT a leap year.";    
+                Console.WriteLine("Gregorian's calendar leap year: Divisible by 4 and not divisible by 100");
+                febNumberDays = 29;
             }
         }
-        else
+        Console.WriteLine($"returning {febNumberDays} for february.");
+        return febNumberDays;
+    }
+    public static string DayOfProgrammer(int year)
+    {
+        const int dayOfProgrammerOfYear = 256;
+        int daysUntilAugust = 0;
+
+        for (int month = 1; month <= 8; month++)
         {
-            result += "Julian's calendar: NOT a leap year.";
+            if (month==2)
+            {
+                daysUntilAugust += FebNumberDays(year);    
+            }else
+            {
+                daysUntilAugust += DateTime.DaysInMonth(year, month);    
+            }
         }
 
-        //Now get the number of the day based on the provided year
+        int daysOfSeptember = dayOfProgrammerOfYear - daysUntilAugust;
 
-        DateTime dateTime = new(year, 9, 13);
-        Console.WriteLine($"{dateTime}");
-
-        return $"{result} ";
+        return $"{daysOfSeptember}.09.{year}";
     }
 }
