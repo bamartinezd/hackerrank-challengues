@@ -4,6 +4,8 @@ class Program
 {
     static void Main(string[] args)
     {
+        //https://www.hackerrank.com/challenges/day-of-the-programmer
+
         int InputYear = int.Parse(Console.ReadLine());
         Console.WriteLine(DayOfProgrammer(InputYear));
     }
@@ -13,6 +15,7 @@ class Program
         if (year % 4 == 0)
         {
             Console.WriteLine("Julian's calendar leap year: Every year that is exactly divisible by four is a leap year, so...");
+            febNumberDays = 29;
             if (year % 400 == 0)
             {
                 Console.WriteLine("Gregorian's calendar leap year: Centurial years are leap years if they are exactly divisible by 400");
@@ -27,7 +30,7 @@ class Program
         Console.WriteLine($"returning {febNumberDays} for february.");
         return febNumberDays;
     }
-    public static string DayOfProgrammer(int year)
+    private static string DayOfProgrammer(int year)
     {
         const int dayOfProgrammerOfYear = 256;
         int daysUntilAugust = 0;
