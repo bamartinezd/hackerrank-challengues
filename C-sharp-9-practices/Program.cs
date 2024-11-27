@@ -1,5 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Threading;
+using System.Threading.Tasks;
+using Microsoft.VisualBasic;
 
 namespace C_sharp_9_practices
 {
@@ -7,89 +11,44 @@ namespace C_sharp_9_practices
     {
         static void Main(string[] args)
         {
+            string a=string.Empty;
 
-            EnumA D;
-            EnumB C = EnumB.C;
-            D = (EnumA)C;
-
-            Console.WriteLine(D);
-
-            //Console.WriteLine(IsActive(0));
-
-            //char k = 'b';
-            //Console.WriteLine(k.IsLetter1());
-
-
-            //Console.WriteLine(ValidateNull("Hi"));
-
-            //// Instnace class
-            ////Car car = new();
-
-            //List<CarEnt> list = new()
-            //{
-            //    new() { Brand = "Mazda 3", Plate = "dfghj" },
-            //    new() { Brand = "Renault ", Plate = "djasdhj" },
-            //};
-
-            //foreach (var item in list)
-            //{
-            //    Console.WriteLine(item.Brand);
-            //}
-
-            ////Console.WriteLine(car.GetBrand("Mazda 3"));
-
-            //Console.WriteLine();
-            //Console.WriteLine();
-            //Console.WriteLine();
-            //Console.WriteLine(GetSalary(1));
-
-
-        }
-
-        // Functions 
-        private static bool IsActive(int value) => value is 0 ? false : true;
-
-        private static string ValidateNull(string value)
-        {
-            string message = string.Empty;
-
-            if (value is not null)
-            {
-                message = "Hola mundo";
-            }
-
-            return message;
-        }
-
-
-
-        private static int GetSalary(int option) =>
-            option switch
-            {
-                ((int)SalaryEnum.First) => 10000,
-                ((int)SalaryEnum.Second) => 20000,
-                ((int)SalaryEnum.Third) => 30000,
-                _ => 500
+            var tasks = new Task[]{
+                Task.Run(async () => {a = await ConcurrencyVsParalelismTasks.GetFirstTaskAsync();}),
+                Task.Run(async () => await ConcurrencyVsParalelismTasks.GetSecondTaskAsync()),
+                Task.Run(async () => await ConcurrencyVsParalelismTasks.GetThirdTaskAsync())
             };
 
-    }
+            //Concurrency: The ability of a system to handle multiple tasks at the same time, 
+            //             These tasks do not necessarily execute simultaneously; instead, 
+            //             they may be interleaved, giving the appearance of simultaneous execution.
+            a=string.Empty;
+            Console.WriteLine($"Begin of WhenAll");
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            Task.WhenAll(tasks);
+            stopwatch.Stop();
+            Console.WriteLine($"{stopwatch.ElapsedMilliseconds} Ms -> {a}");
+            
+            a=string.Empty;
+            Console.WriteLine($"Begin of WaitAll");
+            Stopwatch stopwatch1 = new Stopwatch();
+            stopwatch1.Start();
+            Task.WaitAll(tasks);
+            stopwatch1.Stop();
+            Console.WriteLine($"{stopwatch1.ElapsedMilliseconds} Ms -> {a}");
 
-    public enum EnumA { 
-    A,
-    B,
-    C,
-    D
+            //Paralelism: Involves real execution of multiple tasks even in multiple-core at exactly the same time.
+            
+            a=string.Empty;
+            Console.WriteLine($"Begin of Parallel.For");
+            Stopwatch stopwatch3= new Stopwatch();
+            stopwatch3.Start();
+            Parallel.ForEach(tasks, task => {
+                Console.WriteLine($"{task.Id}: {task.Status}");
+            });
+            stopwatch3.Stop();
+            Console.WriteLine($"{stopwatch3.ElapsedMilliseconds} Ms -> {a}");
+        }
     }
-
-    public enum EnumB
-    {
-        C,
-        D
-    }
-    public enum SalaryEnum { 
-        First = 1,
-        Second,
-        Third
-    }
-
 }

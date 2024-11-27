@@ -73,6 +73,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "even-odd-pairs.Tests", "eve
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "day-of-the-programmer", "day-of-the-programmer\day-of-the-programmer.csproj", "{CCB6FF61-F927-41BA-B044-C09497E96B97}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IsAnagram", "IsAnagram\IsAnagram.csproj", "{6BA6586C-FDB4-43C2-860E-1275F6D3C174}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -215,6 +217,10 @@ Global
 		{CCB6FF61-F927-41BA-B044-C09497E96B97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCB6FF61-F927-41BA-B044-C09497E96B97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CCB6FF61-F927-41BA-B044-C09497E96B97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BA6586C-FDB4-43C2-860E-1275F6D3C174}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BA6586C-FDB4-43C2-860E-1275F6D3C174}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BA6586C-FDB4-43C2-860E-1275F6D3C174}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BA6586C-FDB4-43C2-860E-1275F6D3C174}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -6,32 +6,40 @@ class Program
     {
 
         int InputYear = int.Parse(Console.ReadLine());
-        Console.WriteLine(dayOfProgrammer(InputYear));
+        Console.WriteLine(DayOfProgrammer(InputYear));
 
     }
 
-    public static string dayOfProgrammer(int year)
+    public static string DayOfProgrammer(int year)
     {
         string result = string.Empty;
 
         if (year % 4 == 0)
         {
-            if (year % 100 != 0)
+            result += "Julian's calendar leap year: Every year that is exactly divisible by four is a leap year \n";
+            if (year % 400 == 0)
             {
-                result += "Gregorian's calendar leap year.";
+                result += "Gregorian's calendar leap year: Centurial years are leap years if they are exactly divisible by 400";
             }
-            
-            result += "Julian's calendar leap year.";
-        }
-        else if (year % 400 != 0)
-        {
-            result += "Gregorian's calendar leap year.";
+            else if (year % 100 != 0)
+            {
+                result += "Gregorian's calendar leap year: Divisible by 4 and not divisible by 100";
+            }
+            else
+            {
+                result += "Gregorian's calendar: NOT a leap year.";    
+            }
         }
         else
         {
-            result += "Julian's calendar not a leap year.";
+            result += "Julian's calendar: NOT a leap year.";
         }
 
-        return result;
+        //Now get the number of the day based on the provided year
+
+        DateTime dateTime = new(year, 9, 13);
+        Console.WriteLine($"{dateTime}");
+
+        return $"{result} ";
     }
 }
