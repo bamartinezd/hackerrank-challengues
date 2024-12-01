@@ -75,6 +75,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "day-of-the-programmer", "da
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IsAnagram", "IsAnagram\IsAnagram.csproj", "{6BA6586C-FDB4-43C2-860E-1275F6D3C174}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "climbing-the-leaderboard", "climbing-the-leaderboard\climbing-the-leaderboard.csproj", "{D8D31B73-38DC-479E-995A-709B3E378F74}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -221,6 +223,10 @@ Global
 		{6BA6586C-FDB4-43C2-860E-1275F6D3C174}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BA6586C-FDB4-43C2-860E-1275F6D3C174}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BA6586C-FDB4-43C2-860E-1275F6D3C174}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8D31B73-38DC-479E-995A-709B3E378F74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8D31B73-38DC-479E-995A-709B3E378F74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8D31B73-38DC-479E-995A-709B3E378F74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8D31B73-38DC-479E-995A-709B3E378F74}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -9,7 +9,6 @@ class Program
         int InputYear = int.Parse(Console.ReadLine());
         Console.WriteLine(DayOfProgrammer(InputYear));
     }
-
     private static int FebNumberDays(int year){
         int febNumberDays = 28;
         if (year % 4 == 0)
