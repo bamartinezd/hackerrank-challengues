@@ -1,7 +1,5 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Linq;
-using System.Text.Json.Serialization;
 
 class Program
 {
@@ -19,21 +17,17 @@ class Program
     public static List<int> ClimbingLeaderboard(List<int> ranked, List<int> player)
     {
         var positionByGame = new List<int>();
-        
+
         //Get the position of the player by game based on ranked
         foreach (var scoreByGame in player)
         {
             ranked.Add(scoreByGame);
-            
-            List<int> rankedOrdered = ranked.OrderDescending().ToList();
-            Console.WriteLine(JsonConvert.SerializeObject(rankedOrdered));
 
-            Console.WriteLine(JsonConvert.SerializeObject(rankedOrdered.Distinct()));
+            var rankedOrdered = ranked.OrderDescending();
+            var distinct = rankedOrdered.Distinct().ToList();
+            positionByGame.Add(distinct.IndexOf(scoreByGame) + 1);
 
-            positionByGame.Add(rankedOrdered.IndexOf(scoreByGame)+1);
             ranked.Remove(scoreByGame);
-
-            
         }
 
         return positionByGame;
@@ -41,7 +35,8 @@ class Program
 
     public static void Main(string[] args)
     {
-        List<int> result = ClimbingLeaderboard([100, 90, 90, 80], [70, 80, 105]);
+        var result = ClimbingLeaderboard([100, 90, 90, 80], [70, 80, 105]);
+        //var result = ClimbingLeaderboard([100, 100, 50, 40, 40, 20, 10], [5, 25, 50, 120]);
         Console.WriteLine(JsonConvert.SerializeObject(result));
     }
 }
