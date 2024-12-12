@@ -17,26 +17,36 @@ class Program
     public static List<int> ClimbingLeaderboard(List<int> ranked, List<int> player)
     {
         var positionByGame = new List<int>();
+        var rankedDistinct = ranked.Distinct().ToList();
+        var playerScoresStack = new Stack<int>(player);
 
-        //Get the position of the player by game based on ranked
-        foreach (var scoreByGame in player)
+        while (playerScoresStack.Count > 0)
         {
-            ranked.Add(scoreByGame);
+            var score = playerScoresStack.Pop();
 
-            var rankedOrdered = ranked.OrderDescending();
-            var distinct = rankedOrdered.Distinct().ToList();
-            positionByGame.Add(distinct.IndexOf(scoreByGame) + 1);
+            var positionToCheck = rankedDistinct.IndexOf(score) + 1;
+            if (positionToCheck > 0)
+            {
+                positionByGame.Add(positionToCheck);
+            }
+            else
+            {
+                rankedDistinct.Add(score);
 
-            ranked.Remove(scoreByGame);
+                var rankedOrdered = rankedDistinct.OrderDescending().ToList();
+                positionByGame.Add(rankedOrdered.IndexOf(score) + 1);
+
+                rankedDistinct.Remove(score);
+            }
         }
-
+        positionByGame.Reverse();
         return positionByGame;
     }
 
     public static void Main(string[] args)
     {
-        var result = ClimbingLeaderboard([100, 90, 90, 80], [70, 80, 105]);
-        //var result = ClimbingLeaderboard([100, 100, 50, 40, 40, 20, 10], [5, 25, 50, 120]);
+        //var result = ClimbingLeaderboard([100, 90, 90, 80], [70, 80, 105]);
+        var result = ClimbingLeaderboard([100, 100, 50, 40, 40, 20, 10], [5, 25, 50, 120]);
         Console.WriteLine(JsonConvert.SerializeObject(result));
     }
 }
