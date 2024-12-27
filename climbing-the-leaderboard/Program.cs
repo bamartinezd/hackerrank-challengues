@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System.Linq;
+using System.Reflection;
 
 class Program
 {
-
     /*
      * Complete the 'climbingLeaderboard' function below.
      * https://www.hackerrank.com/challenges/climbing-the-leaderboard
@@ -19,6 +19,9 @@ class Program
         var positionByGame = new List<int>();
         var rankedDistinct = ranked.Distinct().ToList();
         var playerScoresStack = new Stack<int>(player);
+
+
+
 
         while (playerScoresStack.Count > 0)
         {
@@ -45,8 +48,27 @@ class Program
 
     public static void Main(string[] args)
     {
-        //var result = ClimbingLeaderboard([100, 90, 90, 80], [70, 80, 105]);
-        var result = ClimbingLeaderboard([100, 100, 50, 40, 40, 20, 10], [5, 25, 50, 120]);
+        var result = ClimbingLeaderboard([100, 90, 90, 80], [70, 80, 105]);
+        //var result = ClimbingLeaderboard([100, 100, 50, 40, 40, 20, 10], [5, 25, 50, 120]);
         Console.WriteLine(JsonConvert.SerializeObject(result));
+    }
+
+    private int RecursiveBinarySearch(List<int> ranked, int toFind)
+    {
+        var start = 0;
+        var middle = 0;
+        var end = 0;
+
+        int result = 0;
+        if (toFind >= middle)
+        {
+            //RecursiveBinarySearch();
+        }
+        else
+        {
+            //RecursiveBinarySearch();
+        }
+        return result;
+
     }
 }
