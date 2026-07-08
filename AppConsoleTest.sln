@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiagonalMatrix", "DiagonalM
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BetweenTwoSet", "BetweenTwoSet\BetweenTwoSet.csproj", "{8BEAD5C3-EA5A-4551-A63F-825D52DFA926}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C-sharp-9-practices", "C-sharp-9-practices\C-sharp-9-practices.csproj", "{6A376B48-333B-414B-A87C-94772198BFA2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C-sharp-practices", "C-sharp-practices\C-sharp-practices.csproj", "{6A376B48-333B-414B-A87C-94772198BFA2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp_fit_point74", "ConsoleApp_fit_point74\ConsoleApp_fit_point74.csproj", "{6B87D426-0C1A-46C0-B1C3-65B8C78938FC}"
 EndProject
